@@ -28,6 +28,7 @@ export default function Home() {
   return (
     <>
       <input type="file" onChange={handleChange} />
+      <pre>{JSON.stringify(parsedData, null, 2)}</pre>
     </>
   );
 }
