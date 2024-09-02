@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/ban-types */
 type Object = Record<string, any>;
 
 const isObject = (item: any): item is Object => {

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/ban-types */
 import { deepClone } from "./deep-clone";
 
 type Object = Record<string, any>;
@@ -22,7 +21,7 @@ type Object = Record<string, any>;
 export function* makeObjectCharIterator<T extends Object>(
   start: T,
   end: T,
-  level = 0
+  level = 0,
 ) {
   // Have to manually cast Object type and return T type due to https://github.com/microsoft/TypeScript/issues/47357
   const object: Object = level === 0 ? deepClone(start) : start;
@@ -31,7 +30,7 @@ export function* makeObjectCharIterator<T extends Object>(
       const recursiveIterator = makeObjectCharIterator(
         object[key],
         endValue,
-        level + 1
+        level + 1,
       );
       while (true) {
         const next = recursiveIterator.next();
