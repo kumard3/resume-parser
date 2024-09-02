@@ -3,46 +3,45 @@ import type {
   TextItem,
   FeatureSet,
   Lines,
-} from "@/utils/lib/parse-resume-from-pdf/types";
-import { getSectionLinesByKeywords } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/get-section-lines";
+} from "@/utils/lib/pdf-parser/types";
+import { getSectionLinesByKeywords } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/get-section-lines";
 import {
   isBold,
   hasNumber,
   hasComma,
   hasLetter,
   hasLetterAndIsAllUpperCase,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/common-features";
-import { getTextWithHighestFeatureScore } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/feature-scoring-system";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/common-features";
+import { getTextWithHighestFeatureScore } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/feature-scoring-system";
 
 // Name
 export const matchOnlyLetterSpaceOrPeriod = (item: TextItem) =>
-  item.text.match(/^[a-zA-Z\s\.]+$/);
+  /^[a-zA-Z\s\.]+$/.exec(item.text);
 
 // Email
 // Simple email regex: xxx@xxx.xxx (xxx = anything not space)
-export const matchEmail = (item: TextItem) => item.text.match(/\S+@\S+\.\S+/);
+export const matchEmail = (item: TextItem) => /\S+@\S+\.\S+/.exec(item.text);
 const hasAt = (item: TextItem) => item.text.includes("@");
 
 // Phone
 // Simple phone regex that matches (xxx)-xxx-xxxx where () and - are optional, - can also be space
 export const matchPhone = (item: TextItem) =>
-  item.text.match(/\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}/);
+  /\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}/.exec(item.text);
 const hasParenthesis = (item: TextItem) => /\([0-9]+\)/.test(item.text);
 
 // Location
 // Simple location regex that matches "<City>, <ST>"
 export const matchCityAndState = (item: TextItem) =>
-  item.text.match(/[A-Z][a-zA-Z\s]+, [A-Z]{2}/);
+  /[A-Z][a-zA-Z\s]+, [A-Z]{2}/.exec(item.text);
 
 // Url
 // Simple url regex that matches "xxx.xxx/xxx" (xxx = anything not space)
-export const matchUrl = (item: TextItem) => item.text.match(/\S+\.[a-z]+\/\S+/);
+export const matchUrl = (item: TextItem) => /\S+\.[a-z]+\/\S+/.exec(item.text);
 // Match https://xxx.xxx where s is optional
 const matchUrlHttpFallback = (item: TextItem) =>
-  item.text.match(/https?:\/\/\S+\.\S+/);
+  /https?:\/\/\S+\.\S+/.exec(item.text);
 // Match www.xxx.xxx
-const matchUrlWwwFallback = (item: TextItem) =>
-  item.text.match(/www\.\S+\.\S+/);
+const matchUrlWwwFallback = (item: TextItem) => /www\.\S+\.\S+/.exec(item.text);
 const hasSlash = (item: TextItem) => item.text.includes("/");
 
 // Summary

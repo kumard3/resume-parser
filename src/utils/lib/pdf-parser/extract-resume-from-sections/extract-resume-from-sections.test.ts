@@ -3,8 +3,8 @@ import {
   matchEmail,
   matchPhone,
   matchUrl,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-profile";
-import type { TextItem } from "@/utils/lib/parse-resume-from-pdf/types";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-profile";
+import type { TextItem } from "@/utils/lib/pdf-parser/types";
 
 const makeTextItem = (text: string) =>
   ({

@@ -1,10 +1,10 @@
 import type { Resume } from "@/types/resume";
-import type { ResumeSectionToLines } from "@/utils/lib/parse-resume-from-pdf/types";
-import { extractProfile } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-profile";
-import { extractEducation } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-education";
-import { extractWorkExperience } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-work-experience";
-import { extractProject } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-project";
-import { extractSkills } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/extract-skills";
+import type { ResumeSectionToLines } from "@/utils/lib/pdf-parser/types";
+import { extractProfile } from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-profile";
+import { extractEducation } from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-education";
+import { extractWorkExperience } from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-work-experience";
+import { extractProject } from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-project";
+import { extractSkills } from "@/utils/lib/pdf-parser/extract-resume-from-sections/extract-skills";
 
 /**
  * Step 4. Extract resume from sections.

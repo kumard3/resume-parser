@@ -1,8 +1,4 @@
-import type {
-  Line,
-  Lines,
-  TextItem,
-} from "@/utils/lib/parse-resume-from-pdf/types";
+import type { Line, Lines, TextItem } from "@/utils/lib/pdf-parser/types";
 
 /**
  * List of bullet points
@@ -82,7 +78,9 @@ const getMostCommonBulletPoint = (str: string): string => {
   const bulletMaxCount = 0;
   for (const char of str) {
     if (bulletToCount.hasOwnProperty(char)) {
-      bulletToCount[char]++;
+      if (bulletToCount[char] !== undefined) {
+        bulletToCount[char]++;
+      }
       //@ts-ignore
       if (bulletToCount[char] > bulletMaxCount) {
         bulletWithMostCount = char;

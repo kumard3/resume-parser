@@ -6,10 +6,7 @@ import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 import type { TextItem as PdfjsTextItem } from "pdfjs-dist/types/src/display/api";
-import type {
-  TextItem,
-  TextItems,
-} from "@/utils/lib/parse-resume-from-pdf/types";
+import type { TextItem, TextItems } from "@/utils/lib/pdf-parser/types";
 
 /**
  * Step 1: Read pdf and output textItems by concatenating results from each page.

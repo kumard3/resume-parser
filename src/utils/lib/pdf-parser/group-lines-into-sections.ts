@@ -4,13 +4,13 @@ import type {
   Line,
   Lines,
   ResumeSectionToLines,
-} from "@/utils/lib/parse-resume-from-pdf/types";
+} from "@/utils/lib/pdf-parser/types";
 import {
   hasLetterAndIsAllUpperCase,
   hasOnlyLettersSpacesAmpersands,
   isBold,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/common-features";
-import { TextItem } from "../pdf-parser";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/common-features";
+import { TextItem } from "@/utils/lib/pdf-parser/types";
 
 export const PROFILE_SECTION: ResumeKey = "profile";
 

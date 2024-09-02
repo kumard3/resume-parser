@@ -3,19 +3,19 @@ import type {
   FeatureSet,
   Lines,
   ResumeSectionToLines,
-} from "@/utils/lib/parse-resume-from-pdf/types";
-import { getSectionLinesByKeywords } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/get-section-lines";
+} from "@/utils/lib/pdf-parser/types";
+import { getSectionLinesByKeywords } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/get-section-lines";
 import {
   DATE_FEATURE_SETS,
   getHasText,
   isBold,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/common-features";
-import { divideSectionIntoSubsections } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/subsections";
-import { getTextWithHighestFeatureScore } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/feature-scoring-system";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/common-features";
+import { divideSectionIntoSubsections } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/subsections";
+import { getTextWithHighestFeatureScore } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/feature-scoring-system";
 import {
   getBulletPointsFromLines,
   getDescriptionsLineIdx,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/bullet-points";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/bullet-points";
 
 export const extractProject = (sections: ResumeSectionToLines) => {
   const projects = [];

@@ -3,21 +3,21 @@ import type {
   FeatureSet,
   ResumeSectionToLines,
   Lines,
-} from "@/utils/lib/parse-resume-from-pdf/types";
+} from "@/utils/lib/pdf-parser/types";
 import type { ResumeEducation } from "@/types/resume";
-import { getSectionLinesByKeywords } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/get-section-lines";
-import { divideSectionIntoSubsections } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/subsections";
+import { getSectionLinesByKeywords } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/get-section-lines";
+import { divideSectionIntoSubsections } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/subsections";
 import {
   DATE_FEATURE_SETS,
   hasComma,
   hasLetter,
   hasNumber,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/common-features";
-import { getTextWithHighestFeatureScore } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/feature-scoring-system";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/common-features";
+import { getTextWithHighestFeatureScore } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/feature-scoring-system";
 import {
   getBulletPointsFromLines,
   getDescriptionsLineIdx,
-} from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/bullet-points";
+} from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/bullet-points";
 
 /**
  *              Unique Attribute
@@ -35,7 +35,7 @@ const DEGREES = ["Associate", "Bachelor", "Master", "PhD", "Ph."];
 const hasDegree = (item: TextItem) =>
   DEGREES.some((degree) => item.text.includes(degree)) ||
   /[ABM][A-Z\.]/.test(item.text); // Match AA, B.S., MBA, etc.
-const matchGPA = (item: TextItem) => item.text.match(/[0-4]\.\d{1,2}/);
+const matchGPA = (item: TextItem) => /[0-4]\.\d{1,2}/.exec(item.text);
 const matchGrade = (item: TextItem) => {
   const grade = parseFloat(item.text);
   if (Number.isFinite(grade) && grade <= 110) {

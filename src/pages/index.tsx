@@ -1,5 +1,5 @@
 import { Resume } from "@/types/resume";
-import { parseResumeFromPdf } from "@/utils/lib/parse-resume-from-pdf";
+import { parseResumeFromPdf } from "@/utils/lib/pdf-parser";
 import { useEffect, useState } from "react";
 
 export default function Home() {

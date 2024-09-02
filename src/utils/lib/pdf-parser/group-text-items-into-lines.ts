@@ -1,10 +1,6 @@
-import { BULLET_POINTS } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/bullet-points";
-import type {
-  TextItems,
-  Line,
-  Lines,
-} from "@/utils/lib/parse-resume-from-pdf/types";
-import { type TextItem } from "../pdf-parser";
+import { BULLET_POINTS } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/bullet-points";
+import type { TextItems, Line, Lines, TextItem } from "@/utils/lib/pdf-parser/types";
+// import { type TextItem } from ".";
 
 /**
  * Step 2: Group text items into lines. This returns an array where each position
@@ -102,9 +98,9 @@ const getTypicalCharWidth = (textItems: TextItems): number => {
       heightToCount[height] = 0;
     }
     heightToCount[height]++;
-    if ((heightToCount[height] as number) > heightMaxCount) {
+    if ((heightToCount[height]) > heightMaxCount) {
       commonHeight = height;
-      heightMaxCount = heightToCount[height] as number;
+      heightMaxCount = heightToCount[height];
     }
 
     // Process font name
@@ -112,9 +108,9 @@ const getTypicalCharWidth = (textItems: TextItems): number => {
       fontNameToCount[fontName] = 0;
     }
     fontNameToCount[fontName] += text.length;
-    if ((fontNameToCount[fontName] as number) > fontNameMaxCount) {
+    if ((fontNameToCount[fontName]) > fontNameMaxCount) {
       commonFontName = fontName;
-      fontNameMaxCount = fontNameToCount[fontName] as number;
+      fontNameMaxCount = fontNameToCount[fontName];
     }
   }
 

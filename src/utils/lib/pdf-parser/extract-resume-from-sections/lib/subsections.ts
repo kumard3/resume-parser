@@ -1,11 +1,12 @@
-import { BULLET_POINTS } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/bullet-points";
-import { isBold } from "@/utils/lib/parse-resume-from-pdf/extract-resume-from-sections/lib/common-features";
+import { BULLET_POINTS } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/bullet-points";
+import { isBold } from "@/utils/lib/pdf-parser/extract-resume-from-sections/lib/common-features";
 import type {
   Lines,
   Line,
   Subsections,
-} from "@/utils/lib/parse-resume-from-pdf/types";
-import { type TextItem } from "@/utils/lib/pdf-parser";
+  TextItem,
+} from "@/utils/lib/pdf-parser/types";
+// import { type TextItem } from "@/utils/lib/pdf-parser";
 
 /**
  * Divide lines into subsections based on difference in line gap or bold text.
@@ -59,7 +60,7 @@ const createIsLineNewSubsectionByLineGap = (
     const lineGap = Math.round((linesY[i - 1] ?? 0) - (linesY[i] ?? 0));
     if (!lineGapToCount[lineGap]) lineGapToCount[lineGap] = 0;
     lineGapToCount[lineGap] += 1;
-    if (lineGapToCount[lineGap]! > maxCount) {
+    if (lineGapToCount[lineGap] > maxCount) {
       lineGapWithMostCount = lineGap;
       maxCount = lineGapToCount[lineGap]!;
     }
