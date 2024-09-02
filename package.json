@@ -21,7 +21,7 @@
     "next": "^14.2.4",
     "node-nlp": "^4.27.0",
     "office-text-extractor": "^3.0.3",
-    "pdfjs-dist": "^4.6.82",
+    "pdfjs-dist": "^3.7.107",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "superjson": "^2.2.1",
